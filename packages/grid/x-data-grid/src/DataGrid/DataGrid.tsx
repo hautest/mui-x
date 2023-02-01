@@ -38,7 +38,9 @@ interface DataGridComponent {
   propTypes?: any;
 }
 
-const TestComponent = () => <div>TestComponent</div>;
+function TestComponent() {
+  return <div>TestComponent</div>;
+}
 
 export const DataGrid = React.memo(TestComponent) as DataGridComponent;
 
