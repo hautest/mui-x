@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { chainPropTypes } from '@mui/utils';
 import { GridBody, GridFooterPlaceholder, GridHeader, GridRoot } from '../components';
 import { DataGridProps } from '../models/props/DataGridProps';
@@ -38,7 +38,9 @@ interface DataGridComponent {
   propTypes?: any;
 }
 
-export const DataGrid = React.memo(DataGridRaw) as DataGridComponent;
+const TestComponent = () => <div>TestComponent</div>;
+
+export const DataGrid = React.memo(TestComponent) as DataGridComponent;
 
 DataGridRaw.propTypes = {
   // ----------------------------- Warning --------------------------------
@@ -96,7 +98,7 @@ DataGridRaw.propTypes = {
   /**
    * Set of columns of type [[GridColDef[]]].
    */
-  columns: chainPropTypes(PropTypes.array.isRequired, (props) => {
+  columns: chainPropTypes(PropTypes.array.isRequired, (props: any) => {
     // @ts-ignore because otherwise `build:api` doesn't work
     if (props.columns && props.columns.some((column) => column.resizable)) {
       return new Error(
